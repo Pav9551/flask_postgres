@@ -104,13 +104,14 @@ data = {"questions_num": 5}
 r = requests.post(endpoint, json = data, headers = headers)#
 print(r.status_code)
 print(r.text)
-```
+
 ```
 Для подключения к базе данных PostgreSQL с помощью программы Navicat 15 for PostgreSQL извне используйте следующие данные:
+```
+```
 
-1. [Установка docker-compose](#Установка-docker-compose)
-1. [Хост:149.154.66.246]
-2. [Порт:5352]
+1. [Хост: 149.154.66.246]
+2. [Порт: 5352]
 3. [DB: main]
 4. [USER: root]
 5. [PASSWORD: 1234]
