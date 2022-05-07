@@ -94,12 +94,13 @@ services:
 ## Пример использования
 Чтобы протестировать веб-сервис необходимо отправить Post запрос. Для этого необходимо знать IP адрес хоста, порт и шаблон запроса:
 ```Python
+#Python
+import requests
 endpoint = f'http://149.154.66.246:4999/questions'
 headers = {
     "Content-Type": "application/json"
 }
 data = {"questions_num": 5}
-import requests
 r = requests.post(endpoint, json = data, headers = headers)#
 print(r.status_code)
 print(r.text)
