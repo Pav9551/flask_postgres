@@ -105,6 +105,7 @@ r = requests.post(endpoint, json = data, headers = headers)#
 print(r.status_code)
 print(r.text)
 ```
+```
 Для подключения к базе данных PostgreSQL с помощью программы Navicat 15 for PostgreSQL извне используйте следующие данные:
 
 1. [Установка docker-compose](#Установка-docker-compose)
