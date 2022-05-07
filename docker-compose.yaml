@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  postgres_jser:
+    container_name: postg_jser
+    image: postgres:13.6-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: main
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 1234
+    volumes:
+      - ./postgres_jser/data/:/var/lib/postgresql/data
+      - ./postgres_jser/prepare/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5352:5432
+  web:
+    build: ./server
+    container_name: server-msg-broker
+    links:
+      - "postgres_jser"
+    environment:
+      - FLASK_ENV=development
+      - PYTHONUNBUFFERED=True
+    depends_on:
+      - postgres_jser
+    restart: always
+    volumes:
+      - ./server:/server
+    ports:
+      - "4999:4999"
+    command: python app.py --host=0.0.0.0
