@@ -16,7 +16,8 @@
 4. [Пример использования](#Пример-использования)
 
 ## Установка docker-compose
-Развертование проводилось на операционной системе ubuntu 20.04 установленной на виртуальном выделенном сервере. Перед началом работы необходимо установить на операционную систему docker и docker-compose. Информация по установке сервисов docker и docker-compose взята с сайта https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04-ru и https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04 (step1) 
+Развертование проводилось на операционной системе ubuntu 20.04 установленной на виртуальном выделенном сервере. Перед началом работы необходимо установить на операционную систему docker и docker-compose. Информация по установке сервисов docker и docker-compose взята с сайта https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04-ru и https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04 (step1):
+
 
 ## Описание файла docker-compose.yaml
 
@@ -67,7 +68,7 @@ services:
     depends_on:
       - postgres_jser
     restart: always
-    # Прокладывам путь для файлов. 
+    # Прописываем путь для хранения файлов.
     volumes:
       - ./server:/server
     # Открываем порт в контейнер
@@ -80,23 +81,39 @@ services:
 
 ```
 ## Установка веб-сервиса
- - Для установки веб-сервиса необходимо скопировать содержимое репозитория на диск выделенного сервера;
+ - Для установки веб-сервиса необходимо скопировать содержимое репозитория на диск выделенного сервера:
+```curl   
+git clone https://github.com/Pav9551/flask_postgres
+```
  - перейти в папку с файлом restart.sh;
+```curl   
+cd flask_postgres
+```
  - сделать файл restart.sh исполняемым:
+```curl 
  sudo chmod +x restart.sh
+ ```
  - запустить файл:
+```curl 
  ./restart.sh
+```
  - дождаться конца установки;
  - проверить состояние контейнеров командой:
+```curl 
  docker-compose ps
+```
+
  - убедиться, что подняты сервисы согласно документу docker-compose.yaml.
 
 ## Пример использования
 Чтобы протестировать веб-сервис необходимо отправить Post запрос. Для этого необходимо знать IP адрес хоста, порт и шаблон запроса:
+```curl
+curl http://127.0.0.1:4999/questions -X POST -H "Content-Type: application/json" -d '{"questions_num": 5}'
+```
 ```Python
 #Python
 import requests
-endpoint = f'http://149.154.66.246:4999/questions'
+endpoint = f'http://127.0.0.1:4999/questions'
 headers = {
     "Content-Type": "application/json"
 }
@@ -109,7 +126,7 @@ print(r.text)
 Для подключения к базе данных PostgreSQL с помощью программы Navicat 15 for PostgreSQL извне используйте следующие данные:
 ```
 ```
- - Хост: 149.154.66.246
+ - Хост: {внешний IP хоста}
  - Порт: 5352
  - DB: main
  - USER: root

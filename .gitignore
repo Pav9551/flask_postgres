@@ -1,0 +1,85 @@
+# Macos tweak
+.DS_Store
+**/__pycache__/
+## Vscode
+.vscode
+*.code-workspace
+
+## Intellij-IDE family
+.idea
+
+# Set ignored file for commit_msg; used to edit commit message from IDE
+commit_msg*
+**/my_ledger*
+###################  Vim block, taken from https://github.com/github/gitignore/blob/master/Global/Vim.gitignore
+# Swap
+[._]*.s[a-v][a-z]
+!*.svg  # comment out if you don't need vector files
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+Sessionx.vim
+
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
+###################
+
+# learning C
+*.out
+cmake-build-debug/
+
+# Archive files
+**/*.log
+**/*.tar.*
+**/*.tar
+**/*.tgz
+**/*.jar
+**/*.zip
+**/*.bz2
+**/*.xz
+
+# Credentials files
+**/*credentials.txt
+**/*credentials.yml
+**/*credentials.yaml
+
+# Common files extensions
+**/*.csv
+**/*.ps
+**/*.docx
+**/*.xlsx
+**/*.pdf
+
+#### Python
+venv/
+
+## Terraform
+**/.terraform
+**/*.tfstate
+**/*.tfstate.backup
+
+## Terragrunt
+**/.terragrunt-cache
+**/.terraform.lock.hcl
+
+
+## Vagrant
+.vagrant/
+# Sublime
+**/*.sublime-project
+**/*.sublime-workspace
+
+# Reference symlink
+**/*reference
+
+#
+**/*scratch_dir/

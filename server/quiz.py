@@ -1,8 +1,8 @@
 import requests
 import psycopg2
 import json
-from datetime import datetime as dt
-from flask import Flask, request, jsonify
+
+
 def addtobase(host="postg_jser", port=5432, num = 3):
     conn = psycopg2.connect(host=host, port=port, dbname="main", user="root", password="1234")
     try:
@@ -14,7 +14,6 @@ def addtobase(host="postg_jser", port=5432, num = 3):
             max_count = 0
             pak = []
             tupleid = []
-            #print("empty")
         else:
             #значение метки последней пачки
             cur.execute("SELECT MAX(count) FROM public.raw_quiz_data")
@@ -26,18 +25,15 @@ def addtobase(host="postg_jser", port=5432, num = 3):
             #запрос кортежей существующих ID
             cur.execute("SELECT id FROM public.raw_quiz_data")
             tupleid = cur.fetchall()
-            #запрашиваем новые данные
+        #запрашиваем новые данные
         flag = True
         path = 'https://jservice.io/api/random?count='+str(num)
         while(flag):
             req = requests.get(path)
             new_id = []
-            #print(tupleid)
             #создаем список кортежей добавляемых id
             for elem in json.loads(req.text):
                 new_id.append(tuple([elem['id'],]) )
-                #print(elem['id'])
-            #print(new_id)
             set_new_id = set(new_id)
             set_tupleid = set(tupleid)
             #проверяем на повторы 
@@ -54,10 +50,9 @@ def addtobase(host="postg_jser", port=5432, num = 3):
                           , elem["created_at"]
                           , max_count + 1
                     ]) 
-                    conn.commit()      
-                #print("ok")
+                    conn.commit()
                 flag = False      
         return (pak)
-    except:#psycopg2.errors.InFailedSqlTransaction:
+    except:
         conn.rollback()
         return ([])    
