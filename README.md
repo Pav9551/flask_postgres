@@ -10,13 +10,15 @@
 ```
 ## Оглавление
 
-1. [Установка docker-compose](#Установка-docker-compose)
+1. [Требования к операционной системе](#Требования-к-операционной-системе)
 2. [Описание файла docker-compose.yaml](#Описание-файла-docker-compose.yaml)
 3. [Установка веб-сервиса](#Установка-веб-сервиса)
 4. [Пример использования](#Пример-использования)
 
-## Установка docker-compose
-Развертование проводилось на операционной системе ubuntu 20.04 установленной на виртуальном выделенном сервере. Перед началом работы необходимо установить на операционную систему docker и docker-compose. Информация по установке сервисов docker и docker-compose взята с сайта https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04-ru и https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04 (step1):
+## Требования к операционной системе
+Тестирование сервиса проводилось на операционной системе ubuntu 20.04 установленной на виртуальном выделенном сервере. Перед началом работы необходимо установить на операционную систему docker и docker-compose<sup>[1](#myfootnote1)</sup>
+
+
 
 
 ## Описание файла docker-compose.yaml
@@ -131,6 +133,7 @@ print(r.text)
  - DB: main
  - USER: root
  - PASSWORD: 1234
-
-
+```
+```
+<a name="myfootnote1">1</a> Информация по установке сервисов docker и docker-compose взята с сайта https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04-ru и https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04 (step1):
 
